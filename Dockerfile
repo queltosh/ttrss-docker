@@ -10,6 +10,6 @@ RUN docker-php-ext-install pdo pdo_pgsql pgsql intl
 COPY init /init
 COPY healthcheck /healthcheck
 RUN echo "*/5 *  *  *  *  www-data   /usr/local/bin/php /var/www/html/update.php --feeds --quiet" >> /etc/crontab
-HEALTHCHECK [ "/healthcheck" ]
+HEALTHCHECK CMD "/healthcheck"
 EXPOSE 80
 ENTRYPOINT [ "/init" ]
